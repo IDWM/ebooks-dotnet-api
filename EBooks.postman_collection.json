@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "3d9c9796-79cf-4b77-aa59-fe536cdda54d",
+		"name": "EBooks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25678350"
+	},
+	"item": [
+		{
+			"name": "Create eBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Title\": \"The Great Gatsby\",\r\n    \"Author\": \"F. Scasdasott Fitzgerald\",\r\n    \"Genre\": \"Fiction\",\r\n    \"Format\": \"Ebook\",\r\n    \"Price\": 9\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/ebook",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all eBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/ebook?genre=Fiction",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook"
+					],
+					"query": [
+						{
+							"key": "genre",
+							"value": "Fiction"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update eBook",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"genre\": \"Science\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/ebook/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change availability",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/ebook/1/change-availability",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook",
+						"1",
+						"change-availability"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Increment stock",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/ebook/1/increment-stock",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook",
+						"1",
+						"increment-stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Purchase eBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"eBookId\": 1,\r\n    \"quantity\": 10,\r\n    \"totalPrice\": 90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/ebook/purchase",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook",
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete eBook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/ebook/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"ebook",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		}
+	]
+}
