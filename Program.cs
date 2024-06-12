@@ -6,6 +6,13 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("ebooks"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AllowLocalhost",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+    );
+});
 var app = builder.Build();
 
 var ebooks = app.MapGroup("api/ebook");
