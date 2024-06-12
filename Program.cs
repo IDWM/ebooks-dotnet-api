@@ -10,10 +10,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(
         "AllowLocalhost",
-        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+        builder =>
+        {
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        }
     );
 });
 var app = builder.Build();
+app.UseCors("AllowLocalhost");
 
 var ebooks = app.MapGroup("api/ebook");
 
